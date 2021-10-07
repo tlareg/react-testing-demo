@@ -1,0 +1,45 @@
+.LoadingOverlay {
+  position: relative;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.LoadingOverlay .LoadingOverlay__background,
+.LoadingOverlay .LoadingOverlay__spinner {
+  display: none;
+}
+
+.LoadingOverlay--isLoading .LoadingOverlay__background {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(255 255 255 / 50%);
+}
+
+.LoadingOverlay--isLoading .LoadingOverlay__spinner {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-top: -40px;
+  margin-left: -40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-width: 30px;
+  border-radius: 50%;
+  -webkit-animation: spin 1s linear infinite;
+  border-style: double;
+  border-color: #6b6b6b transparent;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
