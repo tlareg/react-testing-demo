@@ -27,6 +27,5 @@ describe('TodoList', () => {
     expect(reactTestingTodoItem).not.toHaveClass('todo-item--completed');
   });
 
-  // TODO: add prettier, eslint
   // TODO: test toggling item, test toggling item 2 times
 });
