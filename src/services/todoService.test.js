@@ -1,32 +1,42 @@
 import * as todoService from './todoService';
 
-beforeEach(() => {
+const setupTodoService = () => {
+  todoService.setNetworkDelay(0);
   todoService.resetItems();
-});
+  return todoService;
+};
 
 describe('todoService', () => {
   describe('initially', () => {
-    test('should have 4 items on todo list', async () => {
+    it('should have 4 items on todo list', async () => {
+      expect.hasAssertions();
+      const todoService = setupTodoService();
       const items = await todoService.fetchTodoList();
-      expect(items.length).not.toBe(5);
-      expect(items.length).toBe(4);
+      expect(items).not.toHaveLength(5);
+      expect(items).toHaveLength(4);
     });
 
-    test("'code Todo logic' item should be completed", async () => {
+    it("should have completed 'code Todo logic' item", async () => {
+      expect.hasAssertions();
+      const todoService = setupTodoService();
       const items = await todoService.fetchTodoList();
       const item = items.find(item => item.name === 'code Todo list logic');
       expect(item).toBeDefined();
       expect(item.completed).toBe(true);
     });
 
-    test("'use Jest' item should NOT be completed", async () => {
+    it("should have NOT completed 'use Jest' item", async () => {
+      expect.hasAssertions();
+      const todoService = setupTodoService();
       const items = await todoService.fetchTodoList();
       const item = items.find(item => item.name === 'use Jest');
       expect(item).toBeDefined();
       expect(item.completed).toBe(false);
     });
 
-    test("'use React Testing Library' should NOT be completed", async () => {
+    it("should have NOT completed 'use React Testing Library' item", async () => {
+      expect.hasAssertions();
+      const todoService = setupTodoService();
       const items = await todoService.fetchTodoList();
       const item = items.find(
         item => item.name === 'use React Testing Library'
@@ -35,7 +45,9 @@ describe('todoService', () => {
       expect(item.completed).toBe(false);
     });
 
-    test("'use Cypress' should NOT be completed", async () => {
+    it("should have NOT completed 'use Cypress' item", async () => {
+      expect.hasAssertions();
+      const todoService = setupTodoService();
       const items = await todoService.fetchTodoList();
       const item = items.find(item => item.name === 'use Cypress');
       expect(item).toBeDefined();
@@ -43,7 +55,10 @@ describe('todoService', () => {
     });
   });
 
-  test("after toggling, 'use Jest item' should be completed", async () => {
+  it("after toggling, 'use Jest item' should be completed", async () => {
+    expect.hasAssertions();
+
+    const todoService = setupTodoService();
     let items = await todoService.fetchTodoList();
     let item = items.find(item => item.name === 'use Jest');
 
@@ -56,7 +71,10 @@ describe('todoService', () => {
     expect(item.completed).toBe(true);
   });
 
-  test("after toggling 2 times, 'use Jest item' should NOT be completed", async () => {
+  it("after toggling 2 times, 'use Jest item' should NOT be completed", async () => {
+    expect.hasAssertions();
+
+    const todoService = setupTodoService();
     let items = await todoService.fetchTodoList();
     let item = items.find(item => item.name === 'use Jest');
 

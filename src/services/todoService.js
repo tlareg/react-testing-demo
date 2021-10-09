@@ -1,4 +1,6 @@
-const NETWORK_DELAY = 150;
+let NETWORK_DELAY = 150;
+
+export const setNetworkDelay = delay => (NETWORK_DELAY = delay);
 
 const initialItems = [
   { name: 'code Todo list logic', completed: true },
@@ -12,7 +14,6 @@ let items = [];
 export const resetItems = () => {
   items = initialItems.map(item => ({ ...item }));
 };
-
 resetItems();
 
 export const fetchTodoList = () =>

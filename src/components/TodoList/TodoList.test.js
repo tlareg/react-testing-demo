@@ -3,13 +3,17 @@ import { render, screen } from '@testing-library/react';
 
 import { TodoList } from './TodoList';
 
-describe('TodoList', () => {
-  test('renders TodoList component', async () => {
+describe('component TodoList', () => {
+  it('renders', async () => {
+    expect.assertions(0);
+
     render(<TodoList />);
     // screen.debug();
   });
 
-  test("'use React Testing Library' item should be present after items loaded", async () => {
+  it("should show 'use React Testing Library' item after items loaded", async () => {
+    expect.hasAssertions();
+
     render(<TodoList />);
 
     const reactTestingTodoItem = await screen.findByText(
@@ -18,7 +22,9 @@ describe('TodoList', () => {
     expect(reactTestingTodoItem).toBeInTheDocument();
   });
 
-  test("'use React Testing Library' item initially should NOT be completed", async () => {
+  it("should show 'use React Testing Library' item NOT completed", async () => {
+    expect.hasAssertions();
+
     render(<TodoList />);
 
     const reactTestingTodoItem = await screen.findByText(
