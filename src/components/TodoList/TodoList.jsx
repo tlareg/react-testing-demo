@@ -31,6 +31,7 @@ export const TodoList = () => {
           <li
             key={name}
             className={cn('todo-item', { 'todo-item--completed': completed })}
+            data-testid={name}
             onClick={() => sendCompletedUpdate(name)}
           >
             <div>{name}</div>

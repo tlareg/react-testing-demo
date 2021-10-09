@@ -5,6 +5,7 @@ import './LoadingOverlay.css';
 // eslint-disable-next-line react/prop-types
 export const LoadingOverlay = ({ children, isLoading }) => (
   <div
+    data-testid="LoadingOverlay"
     className={cn('LoadingOverlay', { 'LoadingOverlay--isLoading': isLoading })}
   >
     {children}
