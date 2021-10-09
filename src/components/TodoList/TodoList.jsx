@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import cn from "classnames";
+import React, { useEffect, useState } from 'react';
+import cn from 'classnames';
 
 import { LoadingOverlay } from 'root/components/LoadingOverlay';
 import * as todoService from 'root/services/todoService';
@@ -17,7 +17,7 @@ export const TodoList = () => {
     setIsLoading(false);
   }, []);
 
-  const sendCompletedUpdate = async (name) => {
+  const sendCompletedUpdate = async name => {
     setIsLoading(true);
     const items = await todoService.toggleCompleted(name);
     setTodoItems(items);
@@ -26,15 +26,15 @@ export const TodoList = () => {
 
   return (
     <LoadingOverlay isLoading={isLoading}>
-      <ul className="TodoList">
+      <ul className='TodoList'>
         {todoItems.map(({ name, completed }) => (
           <li
             key={name}
-            className={cn("todo-item", { "todo-item--completed": completed })}
+            className={cn('todo-item', { 'todo-item--completed': completed })}
             onClick={() => sendCompletedUpdate(name)}
           >
             <div>{name}</div>
-            <div>{completed ? "✓" : ""}</div>
+            <div>{completed ? '✓' : ''}</div>
           </li>
         ))}
       </ul>
